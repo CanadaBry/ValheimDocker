@@ -7,20 +7,22 @@
 		    +app_update 896660 \
 		        +exit
 
+#Copy 64bit steamclient, since it keeps using 32bit
 cp /home/steam/steamcmd/linux64/steamclient.so /home/steam/server_data
 
-# start the server
+#Apply default values for server if not set
 SERVER_NAME=${SERVER_NAME:-My\ server}
 SERVER_PORT=${SERVER_PORT:-2456}
 SERVER_WORLD=${SERVER_WORLD:-Dedicated}
 SERVER_PASSWORD=${SERVER_PASSWORD:-secret}
 
+#Trap Container Stop for graceful exit
+trap "echo 1 > server_exit.drp;" SIGTERM
+
+#Launch server
 export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
 export SteamAppId=892970
+/home/bry/server_data/valheim_server.x86_64 -name "$SERVER_NAME" -port $SERVER_PORT -world "$SERVER_WORLD" -password "$SERVER_PASSWORD" -public 1 & 
 
-trap "echo 1 > server_exit.drp;exit 1" SIGTERM
-
-/home/steam/server_data/valheim_server.x86_64 -name "$SERVER_NAME" -port $SERVER_PORT -world "$SERVER_WORLD" -password "$SERVER_PASSWORD" -public 1 &
-
-wait $!
-wait $!
+#Wait for server to exit
+while wait $!; [ $? != 0 ]; do true; done
