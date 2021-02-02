@@ -18,4 +18,4 @@ SERVER_PASSWORD=${SERVER_PASSWORD:-secret}
 export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
 export SteamAppId=892970
 
-/home/steam/server_data/valheim_server.x86_64 -name $SERVER_NAME -port $SERVER_PORT -world $SERVER_WORLD -password $SERVER_PASSWORD -public 1
+/home/steam/server_data/valheim_server.x86_64 -name "$SERVER_NAME" -port $SERVER_PORT -world "$SERVER_WORLD" -password "$SERVER_PASSWORD" -public 1
