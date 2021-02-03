@@ -19,3 +19,6 @@ If you want your server and worlds to be persistent link these folders:
 /home/steam/server_data #Where steamcmd downloads the game files
 
 /home/steam/.config/unity3d/IronGate/Valheim #Where your worlds, banlist, etc lives
+
+
+Dockerfile is a modified version from https://github.com/respawner/docker-steamcmd
