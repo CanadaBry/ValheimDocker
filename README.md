@@ -26,13 +26,14 @@ Dockerfile is a modified version from https://github.com/respawner/docker-steamc
 ## Example
 
 ```
+docker build -t valheim .
 docker run -d --name=valheim \
     -v /opt/valheim/data:/home/steam/server_data \
     -v /opt/valheim/scripts:/home/steam/.config/unity3d/IronGate/Valheim \
     -p 0.0.0.0:2456:2456/udp \
     -p 0.0.0.0:2457:2457/udp \
     -p 0.0.0.0:2458:2458/udp \
-    -e SERVER_NAME="Arneman Valheim Docker" \
+    -e SERVER_NAME="Valheim Docker" \
     -e SERVER_PORT=2456 \
     -e SERVER_PASSWORD="secret" \
 valheim:latest
