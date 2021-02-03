@@ -1,8 +1,8 @@
 # ValheimDocker
 
-A docker application designed to host a dedicated server for the Early Access game **Valheim**.
+A docker application designed to host a dedicated server for the Early Access game **Valheim**. You can find an up-to-date image on my [DockerHub](https://hub.docker.com/r/wilso224/valheim_dedicated_server).
 
-You can find an up-to-date image on my [DockerHub](https://hub.docker.com/r/wilso224/valheim_dedicated_server). Please see below on how to build and/or run this image on your machine.
+Please see below on how to build and/or run this image on your machine.
 
 ## Configuration
 
@@ -31,7 +31,7 @@ Currently there are 2 volumes you will need to mount:
 
 `/home/steam/server_data` *This is the install directory for the server from steamcmd*
 
-`/home/steam/.config/unity3d/IronGate/Valheim` *This is where the game stores you world files and banlist, etc.*
+`/home/steam/.config/unity3d/IronGate/Valheim` *This is where the game stores your world files and banlist, etc.*
 
 
 ## Example
