@@ -52,6 +52,8 @@ docker run -d --name=valheim \
 valheim:latest
 ```
 
+**Please use `docker container stop` to shutdown the server and avoid rollbacks**
+
 ## Thanks to
 
 [Respawner](https://github.com/respawner) - For the base DockerFile used for the image in [docker-steamcmd](https://github.com/respawner/docker-steamcmd)
