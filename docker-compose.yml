@@ -13,6 +13,6 @@ services:
         environment:
             - PUID=1002
             - PGID=1002
-            - SERVER_NAME=Arneman
+            - SERVER_NAME="Valheim Docker"
             - SERVER_PORT=2456
             - SERVER_PASSWORD=secret
