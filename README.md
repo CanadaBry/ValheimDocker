@@ -33,6 +33,8 @@ Currently there are 2 volumes you will need to mount:
 
 `/home/steam/.config/unity3d/IronGate/Valheim` *This is where the game stores your world files and banlist, etc.*
 
+*If you are experience disk write failures when mounting the volumes, add write permissions to the directories on your file system*
+
 
 ## Example
 
