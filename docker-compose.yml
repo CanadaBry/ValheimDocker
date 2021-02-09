@@ -11,6 +11,7 @@ services:
             - '2457:2457/udp'
             - '2458:2458/udp'
         environment:
-            - SERVER_NAME="Valheim Docker"
+            - SERVER_NAME=Valheim\ Docker
             - SERVER_PORT=2456
             - SERVER_PASSWORD=secret
+            - SERVER_WORLD=Dedicated
