@@ -6,10 +6,13 @@ RUN apt-get -y update && \
     apt-get clean && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/
 
+ENV PUID=1000
+ENV PGID=1000
+
 # setup steam user
-RUN useradd -m steam
+RUN groupadd --gid "${PGID}" -r steam 
+RUN useradd -u "${PUID}" -r -g "${PGID}" -m -d /home/steam -c "Valheim server user" steam
 WORKDIR /home/steam
-USER steam
 
 RUN mkdir server_scripts
 COPY server.sh server_scripts/

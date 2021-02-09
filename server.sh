@@ -1,5 +1,9 @@
 #!/bin/bash
 
+usermod -u ${PUID} steam
+groupmod -g ${PGID} steam
+su -s /bin/bash -c 'id' steam
+
 # update server's data
 /home/steam/steamcmd/steamcmd.sh \
 	    +login anonymous \
