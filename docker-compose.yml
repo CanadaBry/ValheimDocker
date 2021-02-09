@@ -7,12 +7,10 @@ services:
             # - './data:/home/steam/server_data'
             # - './scripts:/home/steam/.config/unity3d/IronGate/Valheim'
         ports:
-            - '0.0.0.0:2456:2456/udp'
-            - '0.0.0.0:2457:2457/udp'
-            - '0.0.0.0:2458:2458/udp'
+            - '2456:2456/udp'
+            - '2457:2457/udp'
+            - '2458:2458/udp'
         environment:
-            - PUID=1002
-            - PGID=1002
             - SERVER_NAME=Valheim\ Docker
             - SERVER_PORT=2456
             - SERVER_PASSWORD=secret
