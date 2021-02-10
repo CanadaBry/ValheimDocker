@@ -11,8 +11,7 @@ RUN useradd -m steam
 WORKDIR /home/steam
 USER steam
 
-RUN mkdir server_scripts
-COPY server.sh server_scripts/
+COPY server.sh .
 
 # download steamcmd
 RUN mkdir steamcmd && cd steamcmd && \
@@ -24,5 +23,5 @@ RUN ./steamcmd/steamcmd.sh +quit && \
     ln -s /home/steam/steamcmd/linux32/steamclient.so /home/steam/.steam/sdk32/steamclient.so
 
 # start the server main script
-ENTRYPOINT ["bash", "/home/steam/server_scripts/server.sh"]
+ENTRYPOINT ["bash", "/home/steam/server.sh"]
 

@@ -3,12 +3,12 @@
 # update server's data
 /home/steam/steamcmd/steamcmd.sh \
 	    +login anonymous \
-	        +force_install_dir /home/steam/server_data \
+	        +force_install_dir /home/steam/valheim/server \
 		    +app_update 896660 \
 		        +exit
 
 #Copy 64bit steamclient, since it keeps using 32bit
-cp /home/steam/steamcmd/linux64/steamclient.so /home/steam/server_data
+cp /home/steam/steamcmd/linux64/steamclient.so /home/steam/valheim/server/
 
 #Apply default values for server if not set
 SERVER_NAME=${SERVER_NAME:-My\ server}
@@ -19,7 +19,7 @@ SERVER_PASSWORD=${SERVER_PASSWORD:-secret}
 #Launch server
 export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
 export SteamAppId=892970
-/home/steam/server_data/valheim_server.x86_64 -name "$SERVER_NAME" -port $SERVER_PORT -world "$SERVER_WORLD" -password "$SERVER_PASSWORD" -savedir "/home/steam/server_data/saves" -public 1 &
+/home/steam/valheim/server/valheim_server.x86_64 -name "$SERVER_NAME" -port $SERVER_PORT -world "$SERVER_WORLD" -password "$SERVER_PASSWORD" -savedir "/home/steam/valheim/data" -public 1 &
 
 #Trap Container Stop for graceful exit
 trap "kill -SIGINT $!;" SIGTERM
