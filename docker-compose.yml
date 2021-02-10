@@ -4,7 +4,7 @@ services:
         image: wilso224/valheim_dedicated_server
         container_name: valheim
         # volumes:
-            # - './data:/home/steam/server_data'
+            # - './valheim:/home/steam/valheim'
         ports:
             - '2456:2456/udp'
             - '2457:2457/udp'
