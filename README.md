@@ -3,6 +3,7 @@
 Changed directory setup now that we can specify where to store saves. If using a previous build you will have to move your current persistent data.
 
 `/home/steam/server_data` -> `/home/steam/valheim/server/`
+
 `/home/steam/.config/unity3d/IronGate/Valheim` -> `/home/steam/valheim/data/`
 
 if using `docker-compose.yml` you can use the following to move your pre-existing data to the correct directories.
