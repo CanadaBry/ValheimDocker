@@ -31,7 +31,9 @@ Currently there are 2 volumes you will need to mount:
 
 `/home/steam/server_data` *This is the install directory for the server from steamcmd*
 
-`/home/steam/.config/unity3d/IronGate/Valheim` *This is where the game stores your world files and banlist, etc.*
+~~`/home/steam/.config/unity3d/IronGate/Valheim` *This is where the game stores your world files and banlist, etc.*~~
+
+*save directory has been moved inside `server_data` folder, at `/home/steam/server_data/saves/`*
 
 Be sure to create the directories on your host machine before mounting them with Docker or this will result in a *Disk Write Failure* from steamcmd.
 
