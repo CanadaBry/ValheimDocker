@@ -1,6 +1,17 @@
 ## UPDATE
 
-When updating make a directory `saves` in your volume mapped to `/home/steam/server_data/`. Then copy the cotents of your volume mapped to `/home/steam/.config/unity3d/IronGate/Valheim` into the `saves` directory.
+Changed directory setup now that we can specify where to store saves. If using a previous build you will have to move your current persistent data.
+
+`/home/steam/server_data` -> `/home/steam/valheim/server/`
+`/home/steam/.config/unity3d/IronGate/Valheim` -> `/home/steam/valheim/data/`
+
+if using `docker-compose.yml` you can use the following to move your pre-existing data to the correct directories.
+
+1) Make a new directory in the same folder as `docker-compose.yml`, in this case I will call it "valheim" using `mkdir valheim`
+2) Now run `mkdir server/ data/` to make the appropriate sub directories. **These folders must have these names in order to work.**
+3) Move the current server binaries in the new `valheim/server/` directory
+4) Copy/Move your existing saves into the new `valheim/data/` directory
+5) Point your `docker-compose.yml` to mount your volume `./valheim:/home/steam/valheim/`
 
 # ValheimDocker
 
@@ -33,15 +44,13 @@ If you set your `SERVER_PORT=2456`, this mean you will be using ports 2456, 2457
 
 Below is the volume you will need to mount to have persistent server files
 
-`/home/steam/server_data` *This is the install directory for the server from steamcmd*
-
-~~`/home/steam/.config/unity3d/IronGate/Valheim` *This is where the game stores your world files and banlist, etc.*~~
-
-*save directory has been moved inside `server_data` folder, at `/home/steam/server_data/saves/`*
+`/home/steam/valheim` This folder contains two subfolders
+    `./server` *Directory steamcmd downloads the server files to*
+    `./data` *This is where the game stores your world files and banlist, etc.*
 
 Be sure to create the directories on your host machine before mounting them with Docker or this will result in a *Disk Write Failure* from steamcmd.
 
-*If you already ran the docker before creating the directories run `sudo chown -R $(id -u) data/` to take ownership of the folders. Restart the container and it should work now.*
+*If you already ran the docker before creating the directories run `sudo chown -R $(id -u) valheim/` to take ownership of the folders. Restart the container and it should work now.*
 
 
 ## Example
@@ -49,7 +58,7 @@ Be sure to create the directories on your host machine before mounting them with
 To use the `docker-compose.yml` run the following commands.
 
 ```
-mkdir data/
+mkdir valheim/
 docker-compose up -d
 ```
 
@@ -57,9 +66,9 @@ You can use this command to build the image and run the code.
 
 ```
 docker build -t valheim .
-mkdir -p /opt/valheim/data
+mkdir -p /opt/valheim/
 docker run -d --name=valheim \
-    -v /opt/valheim/data:/home/steam/server_data \
+    -v /opt/valheim/:/home/steam/valheim/ \
     -p 0.0.0.0:2456:2456/udp \
     -p 0.0.0.0:2457:2457/udp \
     -p 0.0.0.0:2458:2458/udp \
