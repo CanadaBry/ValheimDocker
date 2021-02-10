@@ -1,3 +1,7 @@
+## UPDATE
+
+When updating make a directory `saves` in your volume mapped to `/home/steam/server_data/`. Then copy the cotents of your volume mapped to `/home/steam/.config/unity3d/IronGate/Valheim` into the `saves` directory.
+
 # ValheimDocker
 
 A docker application designed to host a dedicated server for the Early Access game **Valheim**. You can find an up-to-date image on my [DockerHub](https://hub.docker.com/r/wilso224/valheim_dedicated_server).
@@ -27,7 +31,7 @@ If you set your `SERVER_PORT=2456`, this mean you will be using ports 2456, 2457
 
 ### Volumes
 
-Currently there are 2 volumes you will need to mount:
+Below is the volume you will need to mount to have persistent server files
 
 `/home/steam/server_data` *This is the install directory for the server from steamcmd*
 
@@ -37,7 +41,7 @@ Currently there are 2 volumes you will need to mount:
 
 Be sure to create the directories on your host machine before mounting them with Docker or this will result in a *Disk Write Failure* from steamcmd.
 
-*If you already ran the docker before creating the directories run `sudo chown $(id -u) scripts/ data/` to take ownership of the folders. Restart the container and it should work now.*
+*If you already ran the docker before creating the directories run `sudo chown -R $(id -u) data/` to take ownership of the folders. Restart the container and it should work now.*
 
 
 ## Example
@@ -45,7 +49,7 @@ Be sure to create the directories on your host machine before mounting them with
 To use the `docker-compose.yml` run the following commands.
 
 ```
-mkdir scripts/ data/
+mkdir data/
 docker-compose up -d
 ```
 
@@ -53,10 +57,9 @@ You can use this command to build the image and run the code.
 
 ```
 docker build -t valheim .
-mkdir -p /opt/valheim/data /opt/valheim/scripts
+mkdir -p /opt/valheim/data
 docker run -d --name=valheim \
     -v /opt/valheim/data:/home/steam/server_data \
-    -v /opt/valheim/scripts:/home/steam/.config/unity3d/IronGate/Valheim \
     -p 0.0.0.0:2456:2456/udp \
     -p 0.0.0.0:2457:2457/udp \
     -p 0.0.0.0:2458:2458/udp \
