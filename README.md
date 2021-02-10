@@ -46,8 +46,10 @@ If you set your `SERVER_PORT=2456`, this mean you will be using ports 2456, 2457
 Below is the volume you will need to mount to have persistent server files
 
 `/home/steam/valheim` This folder contains two subfolders
-    `./server` *Directory steamcmd downloads the server files to*
-    `./data` *This is where the game stores your world files and banlist, etc.*
+
+&nbsp;&nbsp;&nbsp;&nbsp;`./server` *Directory steamcmd downloads the server files to*
+
+&nbsp;&nbsp;&nbsp;&nbsp;`./data` *This is where the game stores your world files and banlist, etc.*
 
 Be sure to create the directories on your host machine before mounting them with Docker or this will result in a *Disk Write Failure* from steamcmd.
 
