@@ -5,7 +5,6 @@ services:
         container_name: valheim
         # volumes:
             # - './data:/home/steam/server_data'
-            # - './scripts:/home/steam/.config/unity3d/IronGate/Valheim'
         ports:
             - '2456:2456/udp'
             - '2457:2457/udp'
