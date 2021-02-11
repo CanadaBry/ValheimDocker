@@ -1,5 +1,8 @@
 #!/bin/bash
 
+PUID=${PUID:-1000}
+PGID=${PGID:-1000}
+
 usermod -u ${PUID} steam
 groupmod -g ${PGID} steam
 su -s /bin/bash -c 'id' steam
