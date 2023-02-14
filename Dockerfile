@@ -19,8 +19,8 @@ RUN mkdir steamcmd && cd steamcmd && \
 
 # start steamcmd to force it to update itself
 RUN ./steamcmd/steamcmd.sh +quit && \
-    mkdir -pv /home/steam/.steam/sdk32/ && \
-    ln -s /home/steam/steamcmd/linux32/steamclient.so /home/steam/.steam/sdk32/steamclient.so
+    mkdir -pv /home/steam/.steam/sdk64/ && \
+    ln -s /home/steam/steamcmd/linux64/steamclient.so /home/steam/.steam/sdk64/steamclient.so
 
 # start the server main script
 ENTRYPOINT ["bash", "/home/steam/server.sh"]
